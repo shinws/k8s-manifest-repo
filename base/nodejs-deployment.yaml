@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-backend
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodejs-backend
+  template:
+    metadata:
+      labels:
+        app: nodejs-backend
+    spec:
+      containers:
+        - name: nodejs-backend
+          image: 137753571819.dkr.ecr.ap-northeast-2.amazonaws.com/nodejs-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000

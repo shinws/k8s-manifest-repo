@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-backend
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-backend
+  template:
+    metadata:
+      labels:
+        app: flask-backend
+    spec:
+      containers:
+        - name: flask-backend
+          image: 137753571819.dkr.ecr.ap-northeast-2.amazonaws.com/ecr-repo-1:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
